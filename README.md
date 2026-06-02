@@ -39,7 +39,35 @@
 ### Step 12: 
   Stop
 # Program:
+#include <stdio.h>
+void swapByValue(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp;
+    printf("Inside swapByValue: a = %d, b = %d\n", a, b);
+}
+
+
+void swapByReference(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int x, y;
+    scanf("%d %d", &x, &y);
+
+    printf("\nBefore swapping: x = %d, y = %d\n", x, y);
+    swapByValue(x, y);
+    printf("After swapByValue in main: x = %d, y = %d\n", x, y);
+    swapByReference(&x, &y);
+    printf("After swapByReference in main: x = %d, y = %d\n", x, y);
+
+    return 0;
+}
 # Output:
+Before swapping: x = 10, y = 20 Inside swapByValue: a = 20, b = 10 After swapByValue in main: x = 10, y = 20 After swapByReference in main: x = 20, y = 10
 # Result: 
   Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -77,7 +105,33 @@
 ### Step 10:
   Stop
 # Program:
+#include <stdio.h>
+int fibonacci(int n) {
+    if (n == 1)
+        return 0;  
+    else if (n == 2)
+        return 1;  
+    else
+        return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    if (n <= 0) {
+        printf("Please enter a positive integer.\n");
+        return 1;
+    }
+    printf("First %d terms of Fibonacci series: ", n);
+    for (int i = 1; i <= n; i++) {
+        printf("%d ", fibonacci(i));
+    }
+    printf("\n");
+
+    return 0;
+}
 # Output:
+First 10 terms of Fibonacci series: 0 1 1 2 3 5 8 13 21 34
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -119,7 +173,47 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 12:
   Stop
 # Program:
+#include <stdio.h>
+void printSequence(int current, int upper) {
+    if (current > upper)
+        return;
+
+    printf("%d ", current);
+
+    printSequence(current + 2, upper);  // Recursive call with step of 2
+}
+
+int main() {
+    int lower, upper;
+    scanf("%d", &lower);
+    scanf("%d", &upper);
+
+    if (lower > upper) {
+        printf("Invalid range.\n");
+        return 1;
+    }
+    char choice;
+    scanf(" %c", &choice);
+
+    if (choice == 'E' || choice == 'e') {
+        if (lower % 2 != 0)
+            lower++;  // Make lower even
+    } else if (choice == 'O' || choice == 'o') {
+        if (lower % 2 == 0)
+            lower++;  // Make lower odd
+    } else {
+        printf("Invalid choice.\n");
+        return 1;
+    }
+
+    printf("Sequence: ");
+    printSequence(lower, upper);
+    printf("\n");
+
+    return 0;
+}
 # Output:
+lower limit: 3 upper limit: 15 Do you want to print Even or Odd numbers? (E/O): O Sequence: 3 5 7 9 11 13 15
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -161,7 +255,32 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 11:
   Stop
 # Program:
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int n, i, sum = 0;
+    int *arr;
+    scanf("%d", &n);
+    arr = (int *)calloc(n, sizeof(int));
+    if (arr == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    for (i = 0; i < n; i++) {
+        sum += arr[i];
+    }
+
+    printf("Sum of the integers: %d\n", sum);
+    free(arr);
+
+    return 0;
+}
 # Output:
+Sum of the integers: 150
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -197,6 +316,28 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10:
   Stop
 # Program:
+#include <stdio.h>
+void displayArray(int arr[], int size) {
+    printf("Array elements are: ");
+    for(int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    int arr[n]; 
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    displayArray(arr, n);
+
+    return 0;
+}
 # Output:
+5 10 20 30 40 50 Array elements are: 10 20 30 40 50
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
